@@ -1,0 +1,103 @@
+//Creating an Abstract class "Shape"
+public abstract class Shape{
+	//Abstract method called "surface_area"
+	public abstract double surface_area();
+
+	//abstact method for "volume"
+	public abstract double volume();
+}
+
+//Class Sphere that extends Shape
+public class Sphere extends Shape{
+	private double radius; // here is an attribute 
+
+	// My parameter constructor
+	public Sphere(double radius){
+		this.radius = radius;
+	}
+
+	//Method to compute surface area
+	public double surface_area(){
+		return 4* Math.PI*Math.pow(radius,2);
+	}
+
+	//Method to compute volume
+	public double volume(){
+		return (4/3)*Math.PI*Math.pow(radius,3);
+	}
+
+	//toString Method
+	public String toString(){
+		return "A Sphere with a radius " + radius + " has surface area" + surface_area() + " and volume " + volume ();
+	}
+}
+
+//Class "Cylinder" that extends "Shape"
+public class Cylinder extends Shape{
+	private double radius; // Attribute here
+	private double height; //Another attribute
+
+	//Paramater constructor
+	public Cylinder(double radius, double height){
+	this.radius = radius;
+	this.height = height;
+	}
+
+	//Method to computer surface area
+	public double surface_area(){
+		return 2*Math.PI*radius*(radius + height);
+	}
+
+	//Method to computer volume
+	public double volume(){
+		return Math.PI * Math.pow(radius, 2)*height;
+	}
+
+	//toString method
+	public String toString(){
+		return "cylinder with radius " + radius + " and height " + height + "has surface area " + surface_area() + "and volume " + volume();
+	}
+}
+
+//Class for "Cone" that extends "Shape"
+public class Cone extends Shape{
+	private double radius; //Attribute here
+	private double height; //Another attribute for "Cone"
+
+	//parameter constructor for "Cone"
+	public Cone(double radius, double height){
+	this.radius = radius;
+	this.height = height;
+	}
+
+	//Method to compute surface aera
+	public double surface_area(){
+		return Math.PI * radius * (radius + Math.sqrt(Math.pow(height,2) + Math.pow(radius,2)));
+}
+	//Method to compute volume
+	public double volume(){
+		return (1/3)*Math.PI * Math.pow(radius, 2) * height;
+}
+	//toString method
+	public String toString(){
+		return "Cone with Radius " + radius + " and height " + height + "has surface area" + surface_area() + " and volume" + volume();
+	}
+}
+
+//Driver class called "ShapeArray"
+public class ShapeArray{
+	public static void main(String[] args){
+	//instantiate  one sphere, one cylinder, and one cone
+	Sphere sphere = new Sphere(5);
+	Cylinder cylinder = new Cylinder(5,10);
+	Cone cone = new Cone(5, 10);
+
+	//This section is to store the class instances into an array named "shapeArray"
+		Shape[] shapeArray = {sphere, cylinder, cone};
+
+//Here will loop throughout the array and print out the instance data of reach object using the object instance's "toString" method
+	for (Shape shape : shapeArray){
+System.out.println(shape.toString());
+		}
+	}
+}
